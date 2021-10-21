@@ -1,0 +1,44 @@
+<style>
+  .text-style {
+    color: #4092da;
+    cursor: pointer;
+  }
+
+  .image-label {
+    font-size: 12px;
+    font-style: italic;
+    align-self: center;
+    text-decoration: none;
+    margin: 10px 0;
+  }
+
+  .media-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .links {
+    margin: 0 10px;
+    max-width: 120px;
+    display: flex;
+    text-decoration: none !important;
+    color: #555;
+    flex-direction: column;
+  }
+
+  .logo {
+    height: 80px;
+    object-fit: contain;
+  }
+</style>
+
+<div class="media-logos space">
+  <% image_hash.each do |key, value| %>
+    <%= link_to value[:site_url], target: "_blank", class: "links" do %>
+      <%= image_tag value[:img_src], alt: key, class: "logo" %>
+      <p class="image-label"><%= key.split('.')[0].humanize %></p>
+    <% end %>
+  <% end %>
+</div>

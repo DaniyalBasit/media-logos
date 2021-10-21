@@ -1,0 +1,4 @@
+<% if @images.present? %>
+  $('#renderImages').html("<%= j render partial: 'images', locals: { image_hash: @images } %>");
+  $("#renderEmbeddedCode").val("<%= j render partial: 'images', locals: { image_hash: @images } %>");
+<% end %>

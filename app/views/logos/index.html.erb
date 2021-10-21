@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3  style="margin-top: 55px;">Introduction</h3>
+      <p>This a simple solution to fetch the site logos.</p>
+      <p>
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout. The point of using Lorem
+        Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+        using 'Content here, content here', making it look like readable English. Many
+        desktop publishing packages and web page editors now use Lorem Ipsum as their 
+        default model text, and a search for 'lorem ipsum' will uncover many web sites 
+        still in their infancy.
+      </p>
+    </div>
+
+    <div class="col-md-8">
+      <h3>Instructions List</h3>
+      <ul>
+        <li>Enter the website urls in input fields</li>
+        <li>Hit the <b class="text-style">Load</b> button</li>
+        <li>Check Preview section</li>
+        <li>Pick html code from Embedded Code section</li>
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to "https://evoke.team/", target: "_blank" do %>
+        <%= image_tag "evoke_logo.png", style:'width: 55px; height: 55px' %>
+        <p class="image-label">Evoke Team</p>
+      <% end %>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-6 field-margin">
+      <%= text_field_tag :logo_1, nil, type: "text", class: 'form-control domain_name', placeholder: "Domain URL" %>
+    </div>
+
+    <div class="col-6 field-margin">
+      <%= text_field_tag :logo_2, nil, type: "text", class: 'form-control domain_name', placeholder: "Domain URL" %>
+    </div>
+
+    <div class="col-6 field-margin">
+      <%= text_field_tag :logo_3, nil, type: "text", class: 'form-control domain_name', placeholder: "Domain URL" %>
+    </div>
+
+    <div class="col-6 field-margin">
+      <%= text_field_tag :logo_4, nil, type: "text", class: 'form-control domain_name', placeholder: "Domain URL" %>
+    </div>
+
+    <div class="col-6 field-margin">
+      <%= text_field_tag :logo_5, nil, type: "text", class: 'form-control domain_name', placeholder: "Domain URL" %>
+    </div>
+
+    <div class="col-4 field-margin">
+      <button type="button" onclick="fetchLogos()" class="btn btn-primary">Load Logos</button>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-md-12">
+      <h3 style="margin-top: 25px;">Preview</h3>
+    </div>
+
+    <!-- render images -->
+    <div class="row" id="renderImages" style='display: flex;margin: 15px 0px;'></div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-md-12" style='display: flex;margin: 15px 0px;'>
+      <h3 style="margin-top: 25px;">Embedded Code</h3>
+    </div>
+
+    <div class="col-md-8" style='display: flex;margin-bottom: 20px;'>
+      <textarea name="" id="renderEmbeddedCode" cols="80" rows="10" disabled></textarea>
+    </div>
+  </div>
+</div>
+
+<script>
+  function fetchLogos() {
+    domain_names = [].map.call($('.domain_name').get(), e => e.value)
+    domain_names = $.grep(domain_names,function(n){ return n.length });
+    if (domain_names.length == 0) {
+      alert("Please give at least one url");
+      return false;
+    }
+
+    $.ajax({
+      url: "<%= root_path %>",
+      type: 'get',
+      dataType: 'script',
+      data: {
+        urls: domain_names
+      }
+    });
+  }
+</script>
