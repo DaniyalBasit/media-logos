@@ -1,4 +1,4 @@
-require 'uri'
+require "addressable/uri"
 
 class LogoService
   include HTTParty
@@ -14,7 +14,7 @@ class LogoService
       urls = params[:urls].delete_if(&:blank?)
 
       urls.each do |url_|
-        domain = URI(url_).hostname
+        domain = Addressable::URI.parse(url_).domain
         domain = url_ if !domain.present? && (url_ =~ DOMAIN_REGEX) == 0
         images_hash.store(domain.to_s, { site_url: url_, img_src: "#{BASE_URL}#{domain}?size=80" }) if domain.present?
       end

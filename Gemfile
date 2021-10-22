@@ -22,8 +22,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# Addressable is an alternative implementation to the URI implementation that is part of Ruby's standard library.
+# It is flexible, offers heuristic parsing, and additionally provides extensive support for IRIs and URI templates.
+gem 'addressable', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
