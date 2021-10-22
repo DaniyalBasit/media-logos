@@ -222,7 +222,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  pg (~> 0.15)
+  pg
   pry-rails
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
